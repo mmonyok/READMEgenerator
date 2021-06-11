@@ -1,0 +1,22 @@
+{
+  "name": "09-readmegenerator",
+  "version": "1.0.0",
+  "description": "Answer a few questions and easily create a README in this node.js README generator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmonyok/READMEgenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmonyok/READMEgenerator/issues"
+  },
+  "homepage": "https://github.com/mmonyok/READMEgenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  }
+}
