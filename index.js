@@ -12,10 +12,15 @@ inquirer
             name: 'repoDescr',
         },
     ]).then(data => {
-        const fileName = `${data.repoName}.json`;
+        const fileName = "README.md";
 
         fs.writeFile(
             fileName,
-            JSON.stringify(data, null, `\t`),
+            generateMarkDown(data),
             err => err ? console.error(err) : console.log("Success!"));
     });
+
+function generateMarkDown(data) {
+    return `# ${data.repoName}
+${data.repoDescr}`;
+}
