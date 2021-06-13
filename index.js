@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
+const markDown = require('./markDown.js')
 const fs = require('fs');
+
 
 inquirer
     .prompt([
@@ -11,16 +13,15 @@ inquirer
             message: 'Please enter a short description for your repository.',
             name: 'repoDescr',
         },
+        {
+            message: 'What was your motivation for this project?',
+            name: 'description1',
+        }
     ]).then(data => {
-        const fileName = "README.md";
+        const fileName = "./demo/README.md";
 
         fs.writeFile(
             fileName,
-            generateMarkDown(data),
+            markDown.generateMarkDown(data),
             err => err ? console.error(err) : console.log("Success!"));
     });
-
-function generateMarkDown(data) {
-    return `# ${data.repoName}
-${data.repoDescr}`;
-}
