@@ -9,7 +9,12 @@ function generateMarkDown(data) {
 - ${data.description4}
 
 ## Table of Contents
-- [${data.repoName}](#${data.repoName})`;
+- [${data.repoName}](#${data.repoName})
+
+## Installation
+- ${data.installation}
+
+`;
 }
 
 module.exports =  {

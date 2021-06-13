@@ -29,6 +29,10 @@ inquirer
             message: 'What did you learn on this project',
             name: 'description4',
         },
+        {
+            message: 'Please write your installation instructions for this project.',
+            name: "installation"
+        }
     ]).then(data => {
         const fileName = "./demo/README.md";
 
