@@ -16,6 +16,10 @@ function generateMarkDown(data) {
 ## Installation
 - ${data.installation}
 
+## Usage
+- ${data.usage}
+
+![Visual display of project.](${data.imageURL})
 `;
 }
 

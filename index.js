@@ -37,6 +37,14 @@ inquirer
             message: 'Please write your installation instructions for this project.',
             name: "installation"
         },
+        {
+            message: 'Please provide detailed instructions for how to use your project.',
+            name: 'usage',
+        },
+        {
+            message: 'Please enter the relative path or the complete URL to your project screenshot or GIF.',
+            name: 'imageURL',
+        },
     ]).then(data => {
         const fileName = "./demo/README.md";
 
