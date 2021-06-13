@@ -16,7 +16,19 @@ inquirer
         {
             message: 'What was your motivation for this project?',
             name: 'description1',
-        }
+        },
+        {
+            message: 'Why did you build this project?',
+            name: 'description2',
+        },
+        {
+            message: 'What problem does this project solve?',
+            name: 'description3',
+        },
+        {
+            message: 'What did you learn on this project',
+            name: 'description4',
+        },
     ]).then(data => {
         const fileName = "./demo/README.md";
 
