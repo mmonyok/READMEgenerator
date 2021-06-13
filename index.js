@@ -14,6 +14,10 @@ inquirer
             name: 'repoDescr',
         },
         {
+            message: 'Please provide the complete URL to your live project.',
+            name: 'liveURL',
+        },
+        {
             message: 'What was your motivation for this project?',
             name: 'description1',
         },
@@ -32,7 +36,7 @@ inquirer
         {
             message: 'Please write your installation instructions for this project.',
             name: "installation"
-        }
+        },
     ]).then(data => {
         const fileName = "./demo/README.md";
 

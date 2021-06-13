@@ -2,6 +2,8 @@ function generateMarkDown(data) {
     return `# ${data.repoName}
 - ${data.repoDescr}
 
+[Live Site!](${liveURL})
+
 ## Description
 - ${data.description1}
 - ${data.description2}
