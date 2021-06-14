@@ -1,3 +1,5 @@
+// Finish credits section after finding out if there is an easier way to do what I did for the collaborators part.
+
 const inquirer = require('inquirer');
 const markDown = require('./markDown.js')
 const fs = require('fs');
@@ -5,6 +7,14 @@ const fs = require('fs');
 
 inquirer
     .prompt([
+        {
+            message: 'What is your email address?',
+            name: 'email',
+        },
+        {
+            message: 'What is your GitHub username?',
+            name: 'username',
+        },
         {
             message: 'Please enter the name of your repository.',
             name: 'repoName'

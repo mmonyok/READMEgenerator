@@ -1,5 +1,5 @@
-# 
-- 
+# melody
+- monyok
 
 [Live Site!](undefined)
 
@@ -10,7 +10,7 @@
 - undefined
 
 ## Table of Contents
-- [](#)
+- [melody](#melody)
 
 ## Installation
 - undefined
@@ -21,6 +21,7 @@
 ![Visual display of project.](undefined)
 
 ## Credits
-- Jane Doe (https://github.com/jdoe)
-- Steve Doe (https://github.com/sdoe)
-- Kelly Doe (https://github.com/kdoe)
+- Contributors:
+	- Jane Doe (https://github.com/jdoe)
+	- Steve Doe (https://github.com/sdoe)
+	- Kelly Doe (https://github.com/kdoe)
