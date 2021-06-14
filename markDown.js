@@ -1,5 +1,6 @@
 function generateMarkDown(data) {
     let collabs;
+    let license = data.license.split(" ").join("%20")
     function collaborators(data) {
         if (data.collabQ) {
             let array = data.collaborators.split(",");
@@ -33,7 +34,7 @@ function generateMarkDown(data) {
 
 ![Forks](https://img.shields.io/github/forks/${data.username}/${data.repoName}?color=00FF00&label=Forks&logo=GitHub&logoColor=00FF00&style=plastic)
 
-![License](https://img.shields.io/github/license/${data.username}/${data.repoName}?color=FFFF00&label=License&message=${data.license}&logo=github&logoColor=FFFF00&style=plastic)
+![License](https://img.shields.io/static/v1?label=license&message=${license}&color=FFFF00&logo=github&logoColor=FFFF00&style=plastic)
 
 ![Repo Size](https://img.shields.io/github/repo-size/${data.username}/${data.repoName}?color=FF7F00&label=Repo%20Size&logo=github&logoColor=FF7F00&style=plastic)
 
