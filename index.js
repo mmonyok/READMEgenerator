@@ -1,13 +1,18 @@
 // Finish credits section after finding out if there is an easier way to do what I did for the collaborators part.
 
 const inquirer = require('inquirer');
-const markDown = require('./markDown.js')
+const markDown = require('./markDown.js');
+const license = require('./license.js');
 const fs = require('fs');
 
 
 inquirer
     .prompt([
         {
+            message: 'What is your First and Last name?',
+            name: 'name',
+        },
+/*         {
             message: 'What is your email address?',
             name: 'email',
         },
@@ -63,7 +68,10 @@ inquirer
         {
             message: "Please enter the first collaborator's name and username separated by a comma (no space before or after the comma) then repeat with each additional collaborator. Example: Jane Doe,jdoe,Steve Doe,sdoe",
             name: 'collaborators',
-        },
+            when(data) {
+                data.collabQ;
+            },
+        }, */
         /*         {
                     type: 'number',
                     message: 'How many collaborators do you have?',
@@ -87,15 +95,15 @@ inquirer
         {
             type: 'list',
             message: 'What type of license will this project use?',
-            choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v2.1', 'Mozilla Public License 2.0', 'The Unlicense'],
-            name: 'license'
-        }
+            choices: ['Apache License 2.0', 'Boost Software License 1.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v3.0', 'MIT License', 'Mozilla Public License 2.0', 'The Unlicense'],
+            name: 'licenseType',
+        },
 
     ]).then(data => {
         const fileName = "./demo/README.md";
-        console.log(data);
+        license.generateLicense(data);
 
-        fs.writeFile(
+        fs.writeFileSync(
             fileName,
             markDown.generateMarkDown(data),
             err => err ? console.error(err) : console.log("Success!"));

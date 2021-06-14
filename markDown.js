@@ -1,25 +1,6 @@
+let collabs;
 function generateMarkDown(data) {
-    let collabs;
-    let license = data.license.split(" ").join("%20")
-    function collaborators(data) {
-        if (data.collabQ) {
-            let array = data.collaborators.split(",");
-            let emptyArray = [];
-            let title = `- Contributors:`;
-            emptyArray.push(title);
-            for (let i = 0; i < array.length;) {
-                let item1 = array[i];
-                i++;
-                let item2 = array[i];
-                i++;
-                let phrase = `\t- ${item1} (https://github.com/${item2})`;
-                emptyArray.push(phrase);
-            }
-            collabs = emptyArray.join("\n");
-        } else {
-            return;
-        }
-    }
+    const license = require('./license.js');
     collaborators(data);
     return `# ${data.repoName}
 - ${data.repoDescr}
@@ -34,7 +15,7 @@ function generateMarkDown(data) {
 
 ![Forks](https://img.shields.io/github/forks/${data.username}/${data.repoName}?color=00FF00&label=Forks&logo=GitHub&logoColor=00FF00&style=plastic)
 
-![License](https://img.shields.io/static/v1?label=license&message=${license}&color=FFFF00&logo=github&logoColor=FFFF00&style=plastic)
+![License](https://img.shields.io/static/v1?label=license&message=${license.badgeName}&color=FFFF00&logo=github&logoColor=FFFF00&style=plastic)
 
 ![Repo Size](https://img.shields.io/github/repo-size/${data.username}/${data.repoName}?color=FF7F00&label=Repo%20Size&logo=github&logoColor=FF7F00&style=plastic)
 
@@ -61,9 +42,31 @@ function generateMarkDown(data) {
 ${collabs}
 
 ## License
-`;
+- ${data.licenseType}
+
+${license.licenseText}`;
 }
 
-module.exports =  {
+function collaborators(data) {
+    if (data.collabQ) {
+        let array = data.collaborators.split(",");
+        let emptyArray = [];
+        let title = `- Contributors:`;
+        emptyArray.push(title);
+        for (let i = 0; i < array.length;) {
+            let item1 = array[i];
+            i++;
+            let item2 = array[i];
+            i++;
+            let phrase = `\t- ${item1} (https://github.com/${item2})`;
+            emptyArray.push(phrase);
+        }
+        collabs = emptyArray.join("\n");
+    } else {
+        return;
+    }
+}
+
+module.exports = {
     generateMarkDown,
 };
