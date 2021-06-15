@@ -2,12 +2,18 @@ let collabs;
 let liveLink;
 let licenseTitle;
 
+// This function will take the data from the inquirer questions and create the file formatting that will later be written into the README.md file.""
 function generateMarkDown(data) {
+    // We need to also access the license file, so we can get all of the licensing information to input into the necessary sections.
     const license = require('./license.js');
+
+    // This statement determines if the user said whether or not there is a live link. If there is then the live link will be written otherwise it will be absent from the README.
     if (data.confirmLink) {
         liveLink = `
 [Live Site!](${data.liveURL})`;
     };
+
+    // This statement formats the beginning of the license section based on whether it is an MIT or Unlicense, otherwise the license title is repeated.
     if (data.licenseType === "MIT License" || data.licenseType === "The Unlicense") {
         licenseTitle = `${license.licenseText}`
     } else {
@@ -15,7 +21,11 @@ function generateMarkDown(data) {
 
 ${license.licenseText}`
     };
+
+    // This call needs to happen here so the collaborator data is collated in the proper order to be used in the formatting section below.
     collaborators(data);
+
+    // This will return the formatted file data to the writeFile() method, so it can be written to the README.md file properly.
     return `# ${data.repoName}
 - ${data.repoDescr}
 ${liveLink}
@@ -80,6 +90,7 @@ Please send any questions to the following:
     - GitHub: (https://github.com/${data.username})`;
 }
 
+// This function properly formats the collaborator data, but only if the user indicates they have collaborators.
 function collaborators(data) {
     if (data.collabQ) {
         let array = data.collaborators.split(",");

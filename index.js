@@ -6,6 +6,7 @@ const fs = require('fs');
 
 inquirer
     .prompt([
+        // This array contains all of the questions that will be asked on the CLI.
         {
             message: 'What is your First and Last name?',
             name: 'name',
@@ -97,10 +98,12 @@ inquirer
             name: 'licenseType',
         },
     ]).then(data => {
-        console.log(data);
+        // This is the location and file name that the to which the README will be written.
         const fileName = "./demo/README.md";
+        // We need to call this function here, so that the license data will collate properly and be available for the generateMarkDown function to use.
         license.generateLicense(data);
 
+        // This will write the final file, the README with the formatting provided in the generateMarkDown function.
         fs.writeFileSync(
             fileName,
             markDown.generateMarkDown(data),

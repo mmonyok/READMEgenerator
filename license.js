@@ -1,20 +1,23 @@
 const request = require('request');
 const fs = require('fs');
-let date = new Date().getFullYear();
 let badgeName;
 let licenseText;
 let licenseURL;
+// Gets the current year, so it can be input into the License Copyright Data.
+let date = new Date().getFullYear();
 
+// This function will generate the selected license both in a license file, and in the license section of the generated README.
 function generateLicense(questionData) {
     let data = questionData;
-    console.log("generateLicense Data");
-    console.log(data);
-    console
     let switchData = data.licenseType;
+    // This switch statement will make sure the correct license data is written to the license file and the generated README.
     switch (switchData) {
         case 'Apache License 2.0':
+            // This is a simplified title that will be written into the license badge.
             badgeName = "Apache%202.0";
+            // This URL will go into the 'request' call, so that the full license text will get generated to the license file.
             licenseURL = "https://www.apache.org/licenses/LICENSE-2.0.txt";
+            // This is the text that will get written to the license section of the README; for the MIT and Unlicense licenses it will also be written to the license file.
             licenseText =
                 `- Copyright [${date}] [${data.name}]
 
@@ -103,13 +106,16 @@ You may obtain a copy of the License at
 - For more information, please refer to <https://unlicense.org/>`;
             break;
     }
+    // This is the location that the license file will be written to and the name it will be given.
     const licenseFile = "./demo/LICENSE";
+    // This if statement will determine if the license file text will be taken from the license url or the license text section (for licenses that don't have a web page in txt format.)
     if (licenseURL === "") {
         fs.writeFile(
             licenseFile,
             licenseText,
             err => err ? console.error(err) : console.log("Wrote license!"));
     } else {
+        // The request goes to the URL and takes the body of the web page and writes it to the license file.
         request(
             { uri: licenseURL },
             (error, response, body) => {
@@ -119,6 +125,7 @@ You may obtain a copy of the License at
                     err => err ? console.error(err) : console.log("Wrote license!"));
             });
     }
+    // This module export needs to be within the function otherwise it will export the two variables before they change to the correct data.
     module.exports = {
         badgeName,
         licenseText,
