@@ -1,11 +1,12 @@
 let collabs;
-function generateMarkDown(data) {
+function generateMarkDown(data, data2) {
     const license = require('./license.js');
+    let liveLink = `[Live Site!](${data.liveURL})`;
     collaborators(data);
     return `# ${data.repoName}
 - ${data.repoDescr}
 
-[Live Site!](${data.liveURL})
+${liveLink}
 
 ![Language Count](https://img.shields.io/github/languages/count/${data.username}/${data.repoName}?color=9400D3&label=Language%20Count&logo=github&logoColor=9400D3&style=plastic)
 
@@ -29,6 +30,14 @@ function generateMarkDown(data) {
 
 ## Table of Contents
 - [${data.repoName}](#${data.repoName})
+    - [Table of Contents](#table-of-contents)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Credits](#credits)
+    - [License](#license)
+    - [Contributing](#contributing)
+    - [Tests](#tests)
+    - [Questions](#questions)
 
 ## Installation
 - ${data.installation}
@@ -44,14 +53,24 @@ ${collabs}
 ## License
 - ${data.licenseType}
 
-${license.licenseText}`;
+${license.licenseText}
+
+## Contributing
+
+## Tests
+
+## Questions
+Please send any questions to the following:
+- ${data.name}
+    - Email: (${data.email})
+    - GitHub: (https://github.com/${data.username})`;
 }
 
 function collaborators(data) {
     if (data.collabQ) {
         let array = data.collaborators.split(",");
         let emptyArray = [];
-        let title = `- Contributors:`;
+        let title = `- Collaborators:`;
         emptyArray.push(title);
         for (let i = 0; i < array.length;) {
             let item1 = array[i];

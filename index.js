@@ -12,7 +12,7 @@ inquirer
             message: 'What is your First and Last name?',
             name: 'name',
         },
-/*         {
+        {
             message: 'What is your email address?',
             name: 'email',
         },
@@ -29,8 +29,16 @@ inquirer
             name: 'repoDescr',
         },
         {
+            type: 'confirm',
+            message: 'Does your project have a live link?',
+            name: 'confirmLink',
+        },
+        {
             message: 'Please provide the complete URL to your live project.',
             name: 'liveURL',
+            when(data) {
+                return data.confirmLink
+            },
         },
         {
             message: 'What was your motivation for this project?',
@@ -60,38 +68,52 @@ inquirer
             message: 'Please enter the relative path or the complete URL to your project screenshot or GIF.',
             name: 'imageURL',
         },
-        {
-            type: 'confirm',
-            message: 'Do you have collaborators on this project?',
-            name: 'collabQ',
-        },
-        {
-            message: "Please enter the first collaborator's name and username separated by a comma (no space before or after the comma) then repeat with each additional collaborator. Example: Jane Doe,jdoe,Steve Doe,sdoe",
-            name: 'collaborators',
-            when(data) {
-                data.collabQ;
-            },
-        }, */
+        /*         {
+                    type: 'confirm',
+                    message: 'Do you have collaborators on this project?',
+                    name: 'collabQ',
+                }, */
+        /*         {
+                    message: "Please enter the first collaborator's name and username separated by a comma (no space before or after the comma) then repeat with each additional collaborator. Example: Jane Doe,jdoe,Steve Doe,sdoe",
+                    name: 'collaborators',
+                    when(data) {
+                        return data.collabQ;
+                    },
+                }, */
         /*         {
                     type: 'number',
                     message: 'How many collaborators do you have?',
-                    name: 'collaboratorNum',
+                    name: 'collabNum',
                     when(data) {
-                        return data.collaboratorsQ;
-        
+                        return data.collabQ;
                     },
-                },
-                {
-                    when: (data) => {
-                        if (data.collaboratorsQ) {
-                            for (let i = 0; i < data.collaboratorNum; i++) {
-                                type: 'input',
-                                message: 'Enter the name of your collaborator',
-                                name: 'collabName[i]',
+                }, */
+        /*         {
+                    type: 'number',
+                    message: 'How many collaborators do you have?',
+                    name: 'collabNum',
+                    when(data) {
+                        return data.collabQ;
+                    },
+                    filter: async (data) => {
+                        console.log(data);
+                        let nameArray = [];
+                        function loop() {
+                            for (let i = 0; i < data.collabNum;) {
+                                inquirer.prompt([
+                                    {
+                                        message: "Please enter a collaborator's name.",
+                                        name: 'test',
+                                    },
+                                ]).then(data => {
+                                    nameArray.push(data.test);
+                                })
                             }
                         }
-                    }
-                } */
+                        await loop();
+                        return Promise.all(nameArray);
+                    },
+                }, */
         {
             type: 'list',
             message: 'What type of license will this project use?',
@@ -100,6 +122,7 @@ inquirer
         },
 
     ]).then(data => {
+        console.log(data);
         const fileName = "./demo/README.md";
         license.generateLicense(data);
 
