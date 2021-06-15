@@ -1,7 +1,8 @@
 let collabs;
 let liveLink;
 let licenseTitle;
-function generateMarkDown(data, data2) {
+
+function generateMarkDown(data) {
     const license = require('./license.js');
     if (data.confirmLink) {
         liveLink = `
@@ -41,6 +42,7 @@ ${liveLink}
 
 ## Table of Contents
 - [${data.repoName}](#${data.repoName})
+    - [Description](#description)
     - [Table of Contents](#table-of-contents)
     - [Installation](#installation)
     - [Usage](#usage)
@@ -59,8 +61,9 @@ ${liveLink}
 ![Visual display of project.](${data.imageURL})
 
 ## Credits
+Technologies Used:
+- ${data.technologies}
 ${collabs}
-
 ## License
 ${licenseTitle}
 
@@ -81,14 +84,14 @@ function collaborators(data) {
     if (data.collabQ) {
         let array = data.collaborators.split(",");
         let emptyArray = [];
-        let title = `- Collaborators:`;
+        let title = `\nCollaborators:`;
         emptyArray.push(title);
         for (let i = 0; i < array.length;) {
             let item1 = array[i];
             i++;
             let item2 = array[i];
             i++;
-            let phrase = `\t- ${item1} (https://github.com/${item2})`;
+            let phrase = `- ${item1} (https://github.com/${item2})`;
             emptyArray.push(phrase);
         }
         collabs = emptyArray.join("\n");
