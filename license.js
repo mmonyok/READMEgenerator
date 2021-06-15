@@ -122,7 +122,7 @@ You may obtain a copy of the License at
                 fs.writeFile(
                     licenseFile,
                     body,
-                    err => err ? console.error(err) : console.log("Wrote license!"));
+                    err => err ? console.error(err) : console.log("Wrote License!"));
             });
     }
     // This module export needs to be within the function otherwise it will export the two variables before they change to the correct data.

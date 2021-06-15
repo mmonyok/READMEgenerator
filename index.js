@@ -52,7 +52,7 @@ inquirer
             name: 'description3',
         },
         {
-            message: 'What did you learn on this project',
+            message: 'What did you learn on this project?',
             name: 'description4',
         },
         {
@@ -104,8 +104,8 @@ inquirer
         license.generateLicense(data);
 
         // This will write the final file, the README with the formatting provided in the generateMarkDown function.
-        fs.writeFileSync(
+        fs.writeFile(
             fileName,
             markDown.generateMarkDown(data),
-            err => err ? console.error(err) : console.log("Success!"));
+            err => err ? console.error(err) : console.log("Wrote README!"));
     });

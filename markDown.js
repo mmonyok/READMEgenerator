@@ -10,7 +10,10 @@ function generateMarkDown(data) {
     // This statement determines if the user said whether or not there is a live link. If there is then the live link will be written otherwise it will be absent from the README.
     if (data.confirmLink) {
         liveLink = `
-[Live Site!](${data.liveURL})`;
+[Live Site!](${data.liveURL})
+`;
+    } else {
+        liveLink = "";
     };
 
     // This statement formats the beginning of the license section based on whether it is an MIT or Unlicense, otherwise the license title is repeated.
@@ -29,7 +32,6 @@ ${license.licenseText}`
     return `# ${data.repoName}
 - ${data.repoDescr}
 ${liveLink}
-
 ![Language Count](https://img.shields.io/github/languages/count/${data.username}/${data.repoName}?color=9400D3&label=Language%20Count&logo=github&logoColor=9400D3&style=plastic)
 
 ![Top Language](https://img.shields.io/github/languages/top/${data.username}/${data.repoName}?color=4B0082&logo=github&logoColor=4B0082&style=plastic)
@@ -107,6 +109,7 @@ function collaborators(data) {
         }
         collabs = emptyArray.join("\n");
     } else {
+        collabs = "";
         return;
     }
 }
