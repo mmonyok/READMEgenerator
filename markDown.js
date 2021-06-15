@@ -1,11 +1,22 @@
 let collabs;
+let liveLink;
+let licenseTitle;
 function generateMarkDown(data, data2) {
     const license = require('./license.js');
-    let liveLink = `[Live Site!](${data.liveURL})`;
+    if (data.confirmLink) {
+        liveLink = `
+[Live Site!](${data.liveURL})`;
+    };
+    if (data.licenseType === "MIT License" || data.licenseType === "The Unlicense") {
+        licenseTitle = `${license.licenseText}`
+    } else {
+        licenseTitle = `- ${data.licenseType}
+
+${license.licenseText}`
+    };
     collaborators(data);
     return `# ${data.repoName}
 - ${data.repoDescr}
-
 ${liveLink}
 
 ![Language Count](https://img.shields.io/github/languages/count/${data.username}/${data.repoName}?color=9400D3&label=Language%20Count&logo=github&logoColor=9400D3&style=plastic)
@@ -51,13 +62,13 @@ ${liveLink}
 ${collabs}
 
 ## License
-- ${data.licenseType}
-
-${license.licenseText}
+${licenseTitle}
 
 ## Contributing
+- ${data.contributing}
 
 ## Tests
+- ${data.testing}
 
 ## Questions
 Please send any questions to the following:

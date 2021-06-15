@@ -1,5 +1,3 @@
-// Finish credits section after finding out if there is an easier way to do what I did for the collaborators part.
-
 const inquirer = require('inquirer');
 const markDown = require('./markDown.js');
 const license = require('./license.js');
@@ -8,7 +6,7 @@ const fs = require('fs');
 
 inquirer
     .prompt([
-        {
+        /* {
             message: 'What is your First and Last name?',
             name: 'name',
         },
@@ -27,7 +25,7 @@ inquirer
         {
             message: 'Please enter a short description for your repository.',
             name: 'repoDescr',
-        },
+        }, */
         {
             type: 'confirm',
             message: 'Does your project have a live link?',
@@ -40,7 +38,7 @@ inquirer
                 return data.confirmLink
             },
         },
-        {
+        /* {
             message: 'What was your motivation for this project?',
             name: 'description1',
         },
@@ -63,11 +61,11 @@ inquirer
         {
             message: 'Please provide detailed instructions for how to use your project.',
             name: 'usage',
-        },
+        }, 
         {
             message: 'Please enter the relative path or the complete URL to your project screenshot or GIF.',
             name: 'imageURL',
-        },
+        }, */
         /*         {
                     type: 'confirm',
                     message: 'Do you have collaborators on this project?',
@@ -113,6 +111,14 @@ inquirer
                         await loop();
                         return Promise.all(nameArray);
                     },
+                }, */
+        /*         {
+                    message: 'How can people contribute to this project?',
+                    name: 'contributing',
+                },
+                {
+                    message: 'What are the testing instructions?',
+                    name: 'testing',
                 }, */
         {
             type: 'list',
