@@ -1,5 +1,5 @@
 # READMEgenerator
-- Answer a some questions in the command line and easily create a README in this node.js README generator.
+- Answer some questions in the command line and easily create a README in this node.js README generator.
 
 [Video of Application](https://drive.google.com/file/d/1xq3J1ZU1RNXhkJohrqSIaFuDpN7gN32W/view?usp=sharing)
 
